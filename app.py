@@ -1,12 +1,11 @@
 from fastapi import FastAPI
 from pymongo import MongoClient
-import os
 
 app = FastAPI()
 
 # MongoDB Connection
-MONGO_URI = os.getenv("MONGO_URI")
-db = MONGO_URI["fire_risk_db"]
+client = MongoClient("mongodb+srv://veggie:hc9ohMc6GXZE8jfv@cluster0.ffxx0rq.mongodb.net/veggieDB?retryWrites=true&w=majority")
+db = client["fire_risk_db"]
 risk_collection = db["fire_risk_predictions"]
 live_fire = db["weather_data"]
 
